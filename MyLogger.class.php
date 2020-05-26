@@ -2,12 +2,11 @@
 
 class MyLogger
 {
-	private $origin;
+	public $origin;
 	
-	public function __contruct($origin = "")
+	public function __construct($origin = "")
 	{
-		if ($origin == "" || $origin == null) 
-		{
+		if ($origin == "" || $origin == null) {
 			die("[ERROR] Logger constructor needs origin!");
 		}
 		$this -> origin = $origin;
@@ -37,25 +36,27 @@ class MyLogger
 	
 	public function info($message)
 	{
+		$this -> logWithTime();
 		$this -> log($message, "info");
 	}
 	
 	public function debug($message)
 	{
+		$this -> logWithTime();
 		$this -> log($message, "debug");
 	}
 	
 	public function setOrigin($origin)
 	{
+		$this -> logWithTime();
 		$this -> origin = $origin;
 	}
 }
 
-$logs = new MyLogger();
-$logs -> setOrigin('TestClass');
-$logs -> warning("Dit is een waarschuwing");
-$logs -> error("Dit is een fout");
-$logs -> info("Dit is wat informatie");
-$logs -> debug("Dit is een debug bericht");
+$users = new MyLogger("User");
+$visits = new MyLogger("Visits");
+
+$users -> error("Incorrect password!");
+$visits -> debug("HTTP 1/1 GET /login.php 200");
 
 ?>
