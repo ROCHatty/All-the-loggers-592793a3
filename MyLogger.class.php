@@ -19,36 +19,32 @@ class MyLogger
 	
 	private function log($message, $level)
 	{
+		$this -> logWithTime();
 		echo $this -> origin . " - " . strtoupper($level) . ": " . $message . PHP_EOL;
 	}
 	
 	public function warning($message)
 	{
-		$this -> logWithTime();
 		$this -> log($message, "warning");
 	}
 	
 	public function error($message)
 	{
-		$this -> logWithTime();
 		$this -> log($message, "error");
 	}
 	
 	public function info($message)
 	{
-		$this -> logWithTime();
 		$this -> log($message, "info");
 	}
 	
 	public function debug($message)
 	{
-		$this -> logWithTime();
 		$this -> log($message, "debug");
 	}
 	
 	public function setOrigin($origin)
 	{
-		$this -> logWithTime();
 		$this -> origin = $origin;
 	}
 }
